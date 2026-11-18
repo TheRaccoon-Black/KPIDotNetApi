@@ -8,9 +8,11 @@ public class User
 
     public required string Email {get; set;}
     public required string Name { get; set;}
+
+    public required string PasswordHash { get; set; }
     public Department? Department {get; set;}
     [ForeignKey("DepartmentId")]
-    public int DepartmentId {get; set;}
+    public int? DepartmentId {get; set;}
     public int? SupervisorId { get; set;}
     
     [ForeignKey("SupervisorId")]

@@ -77,5 +77,42 @@ public static class DepartmentEndpoints
                 return Results.Created($"/api/departments/{newDepartment.Id}", 
                 ApiResponse.Ok(response, "Departemen baru berhasil ditambahkan."));
             });
+
+            group.MapPut("/{id}",async(int id, KpiContext db, RequestDepartmentDto dto) =>
+            {
+                if(string.IsNullOrWhiteSpace(dto.Name))
+                    return Results.BadRequest(ApiResponse.Fail("Nama Department wajib diisi"));
+                
+                var department = await db.Departments.FindAsync(id);;
+                if(department is null)
+                {
+                    return Results.BadRequest(ApiResponse.Fail($"Department dengan Id {id} tidak dapat ditemukan."));
+                }
+
+                department.Name = dto.Name;
+                department.ManagerId = dto.ManagerId;
+                department.UpdatedAt = DateTime.UtcNow;
+
+                await db.SaveChangesAsync();
+
+                var response = new ResponseDepartmentDto(
+                    department.Id,
+                    department.Name,
+                    department.ManagerId,
+                    null
+                );
+
+                return Results.Ok(ApiResponse.Ok(response,"Department berhasil di perbaharui"));
+            });
+
+            group.MapDelete("/{id}", async(int id, KpiContext db) =>
+            {
+                var department = await db.Departments.FindAsync(id);
+                if (department is null) return Results.BadRequest(ApiResponse.Fail($"Department dengan id {id} tidak ditemukan"));
+
+                db.Departments.Remove(department);
+                await db.SaveChangesAsync();
+
+                return Results.Ok(ApiResponse.Ok("Department berhasil di hapus"));            });
     }
 }

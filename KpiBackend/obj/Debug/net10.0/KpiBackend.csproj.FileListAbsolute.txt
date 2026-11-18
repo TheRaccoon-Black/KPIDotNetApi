@@ -167,3 +167,7 @@ C:\laragon\www\kpi\KpiBackend\bin\Debug\net10.0\runtimes\win-x86\native\msalrunt
 C:\laragon\www\kpi\KpiBackend\bin\Debug\net10.0\System.Formats.Asn1.dll
 C:\laragon\www\kpi\KpiBackend\bin\Debug\net10.0\System.Security.Cryptography.Pkcs.dll
 C:\laragon\www\kpi\KpiBackend\bin\Debug\net10.0\runtimes\win\lib\net10.0\System.Security.Cryptography.Pkcs.dll
+C:\laragon\www\kpi\KpiBackend\obj\Debug\net10.0\KpiBackend.sourcelink.json
+C:\laragon\www\kpi\KpiBackend\bin\Debug\net10.0\BCrypt-Net-Next.dll
+C:\laragon\www\kpi\KpiBackend\bin\Debug\net10.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\laragon\www\kpi\KpiBackend\bin\Debug\net10.0\Microsoft.Bcl.Cryptography.dll
